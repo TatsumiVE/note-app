@@ -7,6 +7,7 @@
     <title>Post</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
 
+    <link href="{{asset('css/bootstrap.min.ajax.css')}}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -40,8 +41,12 @@
                     <form action="{{route('post.destroy',$val->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure Want to Delete?')">Delete</button>
+                        {{-- <button type="submit" class="btn btn-danger"  onclick="return confirm('are you delete?')">Delete</button> --}}
+
+                        <button type="submit" class="btn  btn-danger btn-flat show-alert-delete-box" data-toggle="tooltip" title='Delete'>Delete</button>
+
                     </form>
+
                 </td>
               </tr>
             @empty
@@ -50,6 +55,10 @@
 
         </tbody>
       </table>
+
+
+
+
       <div class="row mt-5">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
@@ -64,7 +73,33 @@
             </label>
           </div>
     </div>
+
+
     </div>
-      <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+{{--
+      <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script> --}}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+      <script type="text/javascript">
+        $('.show-alert-delete-box').click(function(event){
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: "Are you sure you want to delete this record?",
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                type: "warning",
+                buttons: ["Cancel","Yes!"],
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

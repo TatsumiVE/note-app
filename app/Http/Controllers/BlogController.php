@@ -20,4 +20,33 @@ class BlogController extends Controller
         Blog::create($request->all());
         return redirect()->route('newblog.index');
     }
+
+    public function show(Blog $blog)
+    {
+        return view('newblog.show',compact('blog'));
+    }
+    public function edit(Blog $blog)
+    {
+       return view('newblog.edit',compact('blog'));
+    // return redirect()->route('blog.edit')->with('',$result);
+    }
+    public function update(Request $request, Blog $blog)
+    {
+
+        $blog->update([
+          'name'=>$request->name,
+          'description'=>$request->description,
+
+        ]);
+        return redirect()->route('newblog.index');
+
+    }
+    public function destroy(Blog $blog)
+    {
+
+        $blog->delete('id', $blog);
+
+        return redirect()->route('newblog.index');
+    }
+
 }

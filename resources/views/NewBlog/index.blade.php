@@ -24,18 +24,22 @@
             <td>{{$val->id}}</td>
             <td>{{$val->name}}</td>
             <td>{{$val->description}}</td>
-            {{-- <td><a href="{{route('newblog.edit',$val->id)}}">Edit</a></td>
+            <td><a href="{{route('newblog.edit',$val->id)}}">Edit</a></td>
             <td><a href="{{route('newblog.show',$val->id)}}">View</a></td>
             <td>
             <form action="{{route('newblog.destroy',$val->id)}}" method="POST">
                 @csrf
-                @method('DELETE')
                 <button type="submit">Delete</button>
             </form>
-           </td> --}}
+           </td>
           </tr>
           @endforeach
         </tbody>
       </table>
+
+
+
+
+
 </body>
 </html>
