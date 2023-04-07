@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\BlogsController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,8 @@ Route::get('/', function () {
 
 Route::resource("/blogs",BlogsController::class);
 Route::resource("/post",PostController::class);
+
+Route::get('/newblog',[BlogController::class,('index')])->name('newblog.index');
+Route::get('newblog/create',[BlogController::class,('create')])->name('newblog.create');
+Route::post('newblog/store',[BlogController::class,('store')])->name('newblog.store');
 
