@@ -15,8 +15,8 @@ class BlogsController extends Controller
      */
     public function index()
     {
-     $data=Blog::all();
-     return view('blog.index',compact('data'));
+     $data=Blog::orderBy('id','desc')->paginate(10);
+     return view('backend.blog.index',compact('data'));
     }
 
     /**
@@ -26,7 +26,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('backend.blog.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class BlogsController extends Controller
     public function show($id)
     {
         $result=Blog::where('id',$id)->first();
-        return view('blog.show',compact('result'));
+        return view('backend.blog.show',compact('result'));
     }
 
     /**
@@ -69,7 +69,7 @@ class BlogsController extends Controller
     public function edit($id)
     {
        $result= Blog::where('id',$id)->first();
-       return view('blog.edit',compact('result'));
+       return view('backend.blog.edit',compact('result'));
     // return redirect()->route('blog.edit')->with('',$result);
     }
 

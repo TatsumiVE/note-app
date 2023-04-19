@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+    @extends('backend.layout.master')
+    @section('content')
+    <div class="container">
+        <h1 class="text-center text-primary">Create Post</h1>
   <form action="{{route('blogs.store')}}" method="POST">
     @csrf
     <div>
@@ -17,8 +12,10 @@
         <input type="text" name="description" id="description" class="description" required/>
         <label for="description">Des</label>
     </div>
-
-    <button type="submit">Submit</button>
+    <a href="{{route('blogs.index')}}" class="btn btn-warning mt-5 mx-2">Cancel</a>
+    <button type="submit" class="btn btn-primary mt-5 mx-2">Create</button>
   </form>
-</body>
-</html>
+
+</div>
+
+  @endsection

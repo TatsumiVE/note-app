@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Post</title>
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
-
-</head>
-<body>
-
+@extends('backend.layout.master')
+@section('content')
     <div class="container mt-5">
         <h1 class="text-center text-primary">Create Post</h1>
         <form action="{{route('post.store')}}" method="POST">
@@ -30,7 +20,9 @@
     <button type="submit" class="btn btn-primary">Create</button>
     </form>
     </div>
+@endsection
 
-      <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-</body>
-</html>
+
+
+
+
